@@ -1,0 +1,29 @@
+{
+  "name": "hearthstone-app",
+  "version": "1.0.0",
+  "description": "fullstack js app, build with next.js",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^1.2.3",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scredi/hearthstone-app.git"
+  },
+  "keywords": [
+    "react",
+    "next"
+  ],
+  "author": "Petronio Maxime",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Scredi/hearthstone-app/issues"
+  },
+  "homepage": "https://github.com/Scredi/hearthstone-app#readme"
+}
