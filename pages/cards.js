@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
+import Link from "next/link"
 import "isomorphic-fetch"
 
 export default class Cards extends React.Component {
@@ -10,34 +11,36 @@ export default class Cards extends React.Component {
             }
         })
         const json = await res.json()
-        for (let i in json) {
-            console.log(typeof i)
-        }
         return {
             cards: json
         }
     }
 
     render () {
+        let prop = this.props.cards
+
+        const cards = []
+
+        for (let i in prop) {
+            let arr = prop[i]
+            for (let index = 0; index < arr.length; index++) {
+                cards.push(arr[index])
+            }
+        }
+
         return (
             <Layout title="Hearthstone-cards">
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Set</th>
-                                <th>Nom</th>
-                                <th>Rareté</th>
-                                <th>Mana</th>
-                                <th>Attaque</th>
-                                <th>Santé</th>
-                                <th>Classe</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
+                <main className="card-grid">
+                    {cards.map((card, i) => {
+                        return (
+                            <div className="card" key={i}>
+                                <Link href={`details?id=${card.cardId}`}>
+                                    <img src={card.img}/>
+                                </Link>
+                            </div>
+                        );
+                    })}
+                </main>
             </Layout>
         )
     }
