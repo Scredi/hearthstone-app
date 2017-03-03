@@ -5,7 +5,7 @@ import "isomorphic-fetch"
 
 export default class Cards extends React.Component {
     static async getInitialProps () {
-        const res = await fetch("https://omgvamp-hearthstone-v1.p.mashape.com/cards?attack=8&locale=frFR", {
+        const res = await fetch("https://omgvamp-hearthstone-v1.p.mashape.com/cards?locale=frFR", {
             headers: {
                 "X-Mashape-Key": "DHjpkilde9mshW0xc4oDeBjfSedwp1E0BJWjsnZdBTsYzWKbi8"
             }
@@ -33,11 +33,12 @@ export default class Cards extends React.Component {
                 <main className="card-grid">
                     {cards.map((card, i) => {
                         return (
-                            <div className="card" key={i}>
-                                <Link href={`details?id=${card.cardId}`}>
-                                    <img src={card.img}/>
-                                </Link>
-                            </div>
+                            card.img ?
+                                <div className="card" key={i}>
+                                    <Link href={`details?id=${card.cardId}`}>
+                                        <img src={card.img ? card.img : ""}/>
+                                    </Link>
+                                </div> : ""
                         );
                     })}
                 </main>
