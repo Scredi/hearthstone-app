@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import Link from "next/link"
+import LazyLoad from "react-lazyload"
 import "isomorphic-fetch"
 
 export default class Cards extends React.Component {
@@ -29,16 +30,18 @@ export default class Cards extends React.Component {
         }
 
         return (
-            <Layout title="Hearthstone-cards">
+            <Layout title="Hearthstone cards">
                 <main className="card-grid">
                     {cards.map((card, i) => {
                         return (
                             card.img ?
-                                <div className="card" key={i}>
-                                    <Link href={`details?id=${card.cardId}`}>
-                                        <img src={card.img ? card.img : ""}/>
-                                    </Link>
-                                </div> : ""
+                                <LazyLoad height={275} offset={100} once key={i}>
+                                    <div className="card">
+                                        <Link href={`details?id=${card.cardId}`}>
+                                            <img src={card.img ? card.img : ""}/>
+                                        </Link>
+                                    </div>
+                                </LazyLoad> : ""
                         );
                     })}
                 </main>
