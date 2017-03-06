@@ -16,8 +16,9 @@ export default class Details extends React.Component {
     }
 
     render () {
+        const title = `Hearthstone card : ${this.props.card[0].name}`
         return (
-            <Layout title="Hearthstone card detail">
+            <Layout title={title}>
                 <main className="details">
                     <div className="details-table">
                         <table>
