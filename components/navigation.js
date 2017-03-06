@@ -18,7 +18,7 @@ export default class Navigation extends React.Component {
     handleClose = () => this.setState({open: false})
 
     render () {
-        const title = <Link href="/"><a  style={{ color: "#fff", textDecoration: "none" }}>Hearthstone App</a></Link>
+        const title = <Link prefetch href="/"><a  style={{ color: "#fff", textDecoration: "none" }}>Hearthstone App</a></Link>
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
                 <div>
